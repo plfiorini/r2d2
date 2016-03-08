@@ -1,0 +1,7 @@
+[Connection]
+Nick=
+User=r
+UseTLS=false
+Server=SERVER:PORT
+ServerPassword=
+Channel=channelname
