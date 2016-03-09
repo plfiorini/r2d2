@@ -10,10 +10,16 @@ go get github.com/thoj/go-ircevent
 go get gopkg.in/ini.v1
 ```
 
+If you need a Golang IRC server try:
+
+```sh
+go get github.com/nightexcessive/excessiveircd
+```
+
 ## Build
 
 ```sh
-go build r2d2.go
+go build
 ```
 
 ## Configure
