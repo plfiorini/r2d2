@@ -52,13 +52,22 @@ func main() {
 
 	ircobj.AddCallback("PRIVMSG", func(event *irc.Event) {
 		go func(event *irc.Event) {
+			var output []string
 			message := event.Message()
+			sender := event.Nick
+			channel := event.Arguments[0]
 
 			if strings.HasPrefix(message, "!help") {
-				CommandHelp(ircobj, event)
+				output = CommandHelp(channel, sender)
 			} else if strings.HasPrefix(message, "!google") {
 				args := strings.Split(strings.Replace(message, "!google ", "", 1), " ")
-				CommandGoogle(ircobj, event, args)
+				output = CommandGoogle(channel, sender, args)
+			}
+
+			if len(output) > 0 {
+				for _, o := range output {
+					ircobj.Privmsg(channel, o)
+				}
 			}
 		}(event)
 	})
