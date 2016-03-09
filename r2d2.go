@@ -52,15 +52,10 @@ func main() {
 
 	ircobj.AddCallback("PRIVMSG", func(event *irc.Event) {
 		go func(event *irc.Event) {
-			//event.Message() contains the message
-			//event.Nick Contains the sender
-			//event.Arguments[0] Contains the channel
-
 			message := event.Message()
-			channel := event.Arguments[0]
 
 			if strings.HasPrefix(message, "!help") {
-				ircobj.Privmsg(channel, fmt.Sprintf("%s: The following commands are available:", event.Nick))
+				CommandHelp(ircobj, event)
 			}
 		}(event)
 	})
