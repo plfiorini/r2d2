@@ -18,7 +18,7 @@ go build r2d2.go
 
 ## Configure
 
-``sh
+```sh
 cp r2d2.ini.template r2d2.ini
 vim r2d2.ini
 ```
