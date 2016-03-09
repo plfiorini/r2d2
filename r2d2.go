@@ -56,6 +56,9 @@ func main() {
 
 			if strings.HasPrefix(message, "!help") {
 				CommandHelp(ircobj, event)
+			} else if strings.HasPrefix(message, "!google") {
+				args := strings.Split(strings.Replace(message, "!google ", "", 1), " ")
+				CommandGoogle(ircobj, event, args)
 			}
 		}(event)
 	})
